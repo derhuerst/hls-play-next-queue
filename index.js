@@ -5,6 +5,7 @@ const randomId = require('shortid').generate
 
 const findTitle = require('./lib/find-title')
 const generatePlaylist = require('./lib/generate-playlist')
+const sendConverted = require('./lib/send-converted')
 
 const err = (msg, code) => {
 	err = 'string' === typeof err ? new Error(err) : err
@@ -26,10 +27,9 @@ const createQueue = (root) => {
 
 		const id = path.basename(req.path)
 		const item = queue.find(item => item.id === id)
+		if (!item) return next()
 
-		// todo: convert to m4a/mp3
-		if (item) res.redirect(302, '/' + item.filename)
-		next()
+		sendConverted(item, req, res, next)
 	}
 
 	const add = (req, res, next) => {
