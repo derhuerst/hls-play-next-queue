@@ -21,6 +21,7 @@
 	"dependencies": {
 		"ffprobe": "^1.1.0",
 		"read-audio-tags": "^0.1.0",
+		"serve-static": "^1.12.4",
 		"shortid": "^2.2.8"
 	}
 }

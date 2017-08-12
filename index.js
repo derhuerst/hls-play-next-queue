@@ -1,5 +1,6 @@
 'use strict'
 
+const path = require('path')
 const randomId = require('shortid').generate
 
 const findTitle = require('./lib/find-title')
@@ -11,7 +12,7 @@ const err = (msg, code) => {
 	return err
 }
 
-const createQueue = () => {
+const createQueue = (root) => {
 	const queue = []
 	let sequence = 0
 
@@ -20,11 +21,22 @@ const createQueue = () => {
 		if (i >= 0) queue.splice(i, 1)
 	}
 
+	const item = (req, res, next) => {
+		if (req.method !== 'GET') return next()
+
+		const id = path.basename(req.path)
+		const item = queue.find(item => item.id === id)
+
+		// todo: convert to m4a/mp3
+		if (item) res.redirect(302, '/' + item.filename)
+		next()
+	}
+
 	const add = (req, res, next) => {
 		const filename = req.query.file
 		if (!filename) return err('invalid file parameter', 400)
 
-		findTitle(filename, (err, data) => {
+		findTitle(path.join(root, filename), (err, data) => {
 			if (err) return err(err, 500)
 
 			data = Object.assign({id: randomId(), sequence: sequence++}, data)
@@ -39,18 +51,20 @@ const createQueue = () => {
 				if (i >= 0) queue.splice(i, 1)
 			}, data.duration)
 
+			console.info('added', filename, 'to the queue', data.id)
 			res.status(201)
 			res.type('text/plain')
-			res.send('ok')
+			res.send(data.id)
 		})
 	}
 
 	const list = (req, res) => {
+		console.info('serving playlist with', queue.length, 'queued')
 		res.type('application/vnd.apple.mpegurl')
 		res.send(generatePlaylist(queue))
 	}
 
-	return {add, list}
+	return {item, add, list}
 }
 
 module.exports = createQueue
