@@ -1,0 +1,22 @@
+{
+	"name": "hls-play-next-queue",
+	"description": "A play next queue that serves an HTTP live stream.",
+	"version": "0.1.0",
+	"main": "index.js",
+	"files": [
+		"index.js"
+	],
+	"keywords": [
+		"todo"
+	],
+	"author": "Jannis R <mail@jannisr.de>",
+	"homepage": "https://github.com/derhuerst/hls-play-next-queue",
+	"repository": "derhuerst/hls-play-next-queue",
+	"bugs": "https://github.com/derhuerst/hls-play-next-queue/issues",
+	"license": "ISC",
+	"engines": {
+		"node": ">=6"
+	},
+	"dependencies": {
+	}
+}
