@@ -3,6 +3,7 @@
 
 const mri = require('mri')
 const express = require('express')
+const corser = require('corser')
 
 const createQueue = require('.')
 const pkg = require('./package.json')
@@ -35,6 +36,7 @@ if (!dir) {
 const {item, add, list} = createQueue(dir)
 
 express()
+.use(corser.create())
 .use(item)
 .get('/', list)
 .post('/', add)

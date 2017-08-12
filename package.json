@@ -28,6 +28,7 @@
 		"node": ">=6"
 	},
 	"dependencies": {
+		"corser": "^2.0.1",
 		"express": "^4.15.4",
 		"ffprobe": "^1.1.0",
 		"mri": "^1.1.0",

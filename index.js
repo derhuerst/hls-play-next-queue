@@ -49,9 +49,9 @@ const createQueue = (root) => {
 			setTimeout(() => {
 				const i = queue.findIndex(item => item.id === data.id)
 				if (i >= 0) queue.splice(i, 1)
-			}, data.duration)
+			}, data.start + data.duration - Date.now())
 
-			console.info('added', filename, 'to the queue', data.id)
+			console.info('added', filename, 'with id', data.id)
 			res.status(201)
 			res.type('text/plain')
 			res.send(data.id)
