@@ -7,7 +7,7 @@ const findTitle = require('./lib/find-title')
 const generatePlaylist = require('./lib/generate-playlist')
 const sendConverted = require('./lib/send-converted')
 
-const err = (msg, code) => {
+const createError = (err, code) => {
 	err = 'string' === typeof err ? new Error(err) : err
 	err.statusCode = code
 	return err
@@ -34,10 +34,10 @@ const createQueue = (root) => {
 
 	const add = (req, res, next) => {
 		const filename = req.query.file
-		if (!filename) return err('invalid file parameter', 400)
+		if (!filename) return next(createError('invalid file parameter', 400))
 
 		findTitle(path.join(root, filename), (err, data) => {
-			if (err) return err(err, 500)
+			if (err) return next(createError(err, 500))
 
 			data = Object.assign({id: randomId(), sequence: sequence++}, data)
 			if (queue.length > 0) {
