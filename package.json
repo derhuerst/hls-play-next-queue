@@ -12,7 +12,12 @@
 		"cli.js"
 	],
 	"keywords": [
-		"todo"
+		"hls",
+		"streaming",
+		"up next",
+		"queue",
+		"playlist",
+		"server"
 	],
 	"author": "Jannis R <mail@jannisr.de>",
 	"homepage": "https://github.com/derhuerst/hls-play-next-queue",

@@ -15,10 +15,29 @@ npm install hls-play-next-queue
 ```
 
 
-## Usage
+## CLI Usage
+
+```shell
+Usage:
+    hls-play-next-queue <dir>
+Examples:
+    hls-play-next-queue /path/to/media
+```
+
+
+## JS Usage
 
 ```js
-todo
+const express = require('express')
+const createQueue = require('.')
+
+const {item, add, list} = createQueue('/path/to/my/media')
+
+express()
+.use(item)
+.get('/', list)
+.post('/', add)
+.listen(3000)
 ```
 
 
