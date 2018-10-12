@@ -28,11 +28,12 @@
 		"node": ">=6"
 	},
 	"dependencies": {
+		"any-shell-escape": "^0.1.1",
 		"corser": "^2.0.1",
 		"express": "^4.15.4",
 		"ffprobe": "^1.1.0",
 		"mri": "^1.1.0",
-		"read-audio-tags": "^0.1.0",
+		"read-audio-tags": "^0.1.1",
 		"send": "^0.15.4",
 		"serve-static": "^1.12.4",
 		"shortid": "^2.2.8"
