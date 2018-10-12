@@ -1,7 +1,7 @@
 {
 	"name": "hls-play-next-queue",
 	"description": "A play next queue that serves an HTTP live stream.",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"main": "index.js",
 	"bin": {
 		"hls-play-next-queue": "./cli.js"
@@ -34,7 +34,7 @@
 		"ffprobe": "^1.1.0",
 		"mri": "^1.1.0",
 		"read-audio-tags": "^0.1.1",
-		"send": "^0.15.4",
+		"send": "^0.16.2",
 		"serve-static": "^1.12.4",
 		"shortid": "^2.2.8"
 	}
