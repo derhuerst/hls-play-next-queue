@@ -34,7 +34,7 @@
 		"ffprobe": "^1.1.0",
 		"mri": "^1.1.0",
 		"read-audio-tags": "^0.1.1",
-		"send": "^0.16.2",
+		"send": "^0.17.1",
 		"serve-static": "^1.12.4",
 		"shortid": "^2.2.8"
 	}
